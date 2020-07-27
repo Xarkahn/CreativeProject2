@@ -561,7 +561,7 @@ form .skillallocation #submit {
 
 .spell-description p {
     text-align: left;
-    text-indent: 5em;
+    text-indent: 3em;
     color: black;
     margin: 0;
 }
@@ -569,7 +569,15 @@ form .skillallocation #submit {
 .modal-content .details {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-around;
+    flex-direction: row;
+    justify-content: left;
+    margin: auto;
+}
+
+.modal-content .details div {
+    flex-direction: column;
+    text-align: left;
+    margin-right: 3em;
 }
 
 /* Spell Modals, modified from https://www.w3schools.com/howto/howto_css_modals.asp */

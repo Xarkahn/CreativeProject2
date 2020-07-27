@@ -216,26 +216,37 @@
                                 let details = document.createElement("DIV");
                                 details.className = "details";
                                 details.innerHTML = `
+                                <div>
                                     <div>
-                                        Range: ${result["range"]}
+                                        <strong>Range:</strong> ${result["range"]}
                                     </div>
                                     <div>
-                                        Duration: ${result["duration"]}
+                                        <strong>Duration:</strong> ${result["duration"]}
                                     </div>
                                     <div>
-                                        Components: ${result["components"].join(", ")}
+                                        <strong>School:</strong> ${result["school"]["name"]}
+                                    </div>
+                                </div>
+                                <div>
+                                    <div>
+                                        <strong>Classes:</strong> ${result["classes"].map(ddClass => ddClass["name"]).join(", ")}
                                     </div>
                                     <div>
-                                        Classes: ${result["classes"].map(ddClass => ddClass["name"]).join(", ")}
+                                        <strong>Ritual:</strong> ${yesNo(result["ritual"])}
                                     </div>
                                     <div>
-                                        Ritual: ${yesNo(result["ritual"])}
+                                        <strong>Concentration:</strong> ${yesNo(result["concentration"])}
                                     </div>
+                                </div>
+                                    `;
+                                let components = [];
+                                result["components"].find(v => v == "V") ? components.push("Verbal") : false;
+                                result["components"].find(s => s == "S") ? components.push("Somatic") : false;
+                                result["material"] ? components.push(result["material"]) : false;
+                                components = components.join("; ");
+                                details.innerHTML += `
                                     <div>
-                                        Concentration: ${yesNo(result["concentration"])}
-                                    </div>
-                                    <div>
-                                        Material Components: ${(result["material"]) ? result["material"] : "none"}
+                                        <strong>Components:</strong> ${components}
                                     </div>
                                 `;
                                 function yesNo(tf) {
@@ -258,7 +269,7 @@
     </div>
 
     <footer class="bg-dark">
-        <a href="https://github.com/Xarkahn/CreativeProject1">
+        <a href="https://github.com/Xarkahn/CreativeProject2">
             Repository
         </a>
     </footer>
